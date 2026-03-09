@@ -8,9 +8,9 @@ from pdf_generator import create_pdf_report
 
 import os
 
-st.set_page_config(page_title="Panel de pedidos pendientes de Bizilur", layout="wide")
+st.set_page_config(page_title="Panel de artículos pendientes de Bizilur", layout="wide")
 
-st.title("Panel de pedidos pendientes de Bizilur")
+st.title("Panel de artículos pendientes de Bizilur")
 
 if os.path.exists("logo.png"):
     st.image("logo.png", width=150)
@@ -224,15 +224,15 @@ if 'file_bytes' in st.session_state:
             )
         with col2:
             st.metric(
-                "Cliente Principal", 
+                "Cliente con más rotura", 
                 most_affected_client,
-                help="El cliente individual que acumula el mayor volumen de unidades pendientes de entrega en este momento."
+                help="El cliente que acumula el mayor volumen de unidades pendientes de entrega en este momento."
             )
             
         st.markdown("---")
         
         # --- Advanced Analytics for Purchasing Manager ---
-        st.subheader("Análisis de Compras y Roturas de Stock")
+        st.subheader("Análisis de Roturas de Stock")
         
         if not display_df.empty:
             st.markdown("##### Artículos Críticos (Mayor volumen pendiente)")
@@ -286,3 +286,4 @@ if 'file_bytes' in st.session_state:
         
 else:
     st.info("Por favor, suba un archivo Excel para comenzar. Nota: Las filas con 'F. Pedido' de antigüedad mayor a 2 años serán excluidas automáticamente.")
+
